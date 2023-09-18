@@ -6,7 +6,7 @@
   {{ product.description }}
 </div>
 
-{% form 'product', product: product %}
+{% form 'product' %}
     <select name="id">
         {% for variant in product.variants %}
           <option value="{{ variant.id }}"
@@ -18,4 +18,5 @@
       </select>
 
   </select>
+  <input type="submit" value="Add to cart">
 {% endform %}
