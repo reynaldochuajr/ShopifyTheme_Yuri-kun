@@ -7,12 +7,15 @@
 </div>
 
 {% form 'product', product: product %}
-  <select name="id">
-    {% for product.variants %}
-      <option value={{ variant.id }}>
-        {{ variant.title }}
-      </option>
-    {% endfor %}
+    <select name="id">
+        {% for variant in product.variants %}
+          <option value="{{ variant.id }}"
+            {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+          >
+            {{ variant.title }} - {{ variant.price | money }}
+          </option>
+        {% endfor %}
+      </select>
 
   </select>
 {% endform %}
